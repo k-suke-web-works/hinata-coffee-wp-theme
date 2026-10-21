@@ -65,3 +65,44 @@ add_action('template_redirect', 'hinata_redirect_menu_single');
 require_once get_template_directory() . '/inc/contact-form.php';
 
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+// 空き状況の表示 [puremam_vacancy]
+function puremam_vacancy_shortcode() {
+    if (!function_exists('get_field')) {
+        return '';
+    }
+
+    $front_page_id = (int) get_option('page_on_front');
+    $facilities = [
+        'vacancy_1' => 'ぴゅあまむ１',
+        'vacancy_2' => 'ぴゅあまむ２',
+    ];
+    $labels = [
+        'open' => '空きあり',
+        'full' => '満室',
+    ];
+
+    ob_start();
+    ?>
+    <div class="vacancy__container">
+      <p class="vacancy__title">現在の空き状況</p>
+      <div class="vacancy__cards">
+        <?php foreach ($facilities as $field => $name): ?>
+          <?php
+          $status = get_field($field, $front_page_id);
+          if (!isset($labels[$status])) {
+              $status = 'full';
+          }
+          ?>
+          <div class="vacancy__card">
+            <span class="vacancy__lamp vacancy__lamp--<?php echo esc_attr($status); ?>" aria-hidden="true"></span>
+            <span class="vacancy__name"><?php echo esc_html($name); ?></span>
+            <span class="vacancy__status"><?php echo esc_html($labels[$status]); ?></span>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+add_shortcode('puremam_vacancy', 'puremam_vacancy_shortcode');
