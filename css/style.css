@@ -399,3 +399,7 @@ section{padding:88px 0;}
    post block (お知らせの詳細ページ)
    ========================================================================== */
 .post__back{margin-top:48px;text-align:right;}
+
+.post__body > * + *{margin-top:1.5em;}
+.post__body h2{font-family:var(--font-display);font-size:1.5rem;line-height:1.4;margin-top:2.2em;}
+.post__body h3{font-family:var(--font-display);font-size:1.2rem;line-height:1.5;margin-top:1.8em;}

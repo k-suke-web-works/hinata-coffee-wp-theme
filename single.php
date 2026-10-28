@@ -19,7 +19,9 @@
 
             <section>
                 <div class="container" style="max-width:720px;">
-                    <?php the_content(); ?>
+                    <div class="post__body">
+                        <?php the_content(); ?>
+                    </div>
                     <p class="post__back">
                         <a class="btn btn--outline" href="<?php echo esc_url(home_url('/news/')); ?>">お知らせ一覧に戻る</a>
                     </p>

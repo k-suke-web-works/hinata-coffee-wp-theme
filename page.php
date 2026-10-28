@@ -11,7 +11,9 @@
 
             <section>
                 <div class="container" style="max-width:720px;">
-                    <?php the_content(); ?>
+                    <div class="page__body post__body">
+                        <?php the_content(); ?>
+                    </div>
                 </div>
             </section>
         <?php endwhile; ?>
