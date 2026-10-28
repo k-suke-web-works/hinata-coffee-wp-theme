@@ -65,3 +65,11 @@ add_action('template_redirect', 'hinata_redirect_menu_single');
 require_once get_template_directory() . '/inc/contact-form.php';
 
 add_filter('wpcf7_autop_or_not', '__return_false');
+
+// ブロックパターンの分類
+function hinata_register_pattern_category() {
+    register_block_pattern_category('hinata-coffee', [
+        'label' => 'ひなたコーヒー',
+    ]);
+}
+add_action('init', 'hinata_register_pattern_category');
