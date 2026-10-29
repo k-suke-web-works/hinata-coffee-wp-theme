@@ -47,6 +47,13 @@
 - Contact Form 7 で作成したフォームを `do_shortcode()` でテンプレートに埋め込み、テーマのCSSに合わせて表示
 - お客様への自動返信メール、Flamingo による送信内容の保存
 
+### ブロックエディタ対応
+
+- `theme.json`(バージョン3)で、エディタで選べる色をテーマの7色に、文字の大きさを3段階に限定(自由な色・大きさは選べない設定)。お店の方が記事を書いても、デザインから外れにくくしています
+- フォント(見出し・ボタンはゴシック体、本文は明朝体)と、ボタンブロックの標準のデザインを、テーマのボタンと同じ見た目に設定
+- 本文のブロック同士の間隔を、テーマのCSS(`.post__body`)でそろえる
+- ブロックパターン「期間限定メニューのお知らせ」を `patterns/` に登録(独自の分類「ひなたコーヒー」)。お店の方は、文字を書き換えるだけでお知らせを作れます
+
 ### その他
 
 - ナビゲーションの現在地表示(`is_front_page()`、`is_page()`、`is_post_type_archive()` などの条件分岐タグで `aria-current="page"` を付与)
@@ -84,6 +91,7 @@
 ```
 hinata-coffee/
 ├─ style.css                 テーマ情報
+├─ theme.json                エディタの色・文字の大きさ・フォント・ボタンの設定
 ├─ functions.php             テーマ設定、CSS・JSの読み込み、投稿タイプ・分類の登録
 ├─ inc/contact-form.php      お問い合わせフォームの処理
 ├─ header.php / footer.php
@@ -93,6 +101,8 @@ hinata-coffee/
 ├─ template-parts/
 │   ├─ news-row.php          お知らせ1行分
 │   └─ menu-item.php         メニューのカード
+├─ patterns/
+│   └─ news-limited-menu.php ブロックパターン(期間限定メニューのお知らせ)
 ├─ css/style.css
 ├─ js/main.js
 └─ images/
@@ -103,3 +113,8 @@ hinata-coffee/
 - カテゴリー一覧・検索結果・404ページ用のテンプレート(`archive.php`、`search.php`、`404.php`)
 - 価格やおすすめの入力欄を、Advanced Custom Fields で入力しやすくする
 - Contact Form 7 のフォームIDをテンプレートに直接書かない形にする
+
+## 更新履歴
+
+- 1.1: ブロックエディタ対応(`theme.json`、ブロックパターン、本文のブロックの間隔)
+- 1.0: 初版
